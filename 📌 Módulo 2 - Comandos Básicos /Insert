@@ -1,0 +1,94 @@
+🔹 Inserindo Dados (INSERT)
+Após criar uma tabela, podemos adicionar registros com INSERT INTO:
+
+use streamflow;
+
+insert into filme(titulo, genero, duracao, ano_lancamento, classificacao_indicativa, diretor, sinopse) 
+values
+      ('O Poderoso Chefão', 'Drama', 175, 1974, '16+', 'Francis Ford Coppola', 'A história de uma família mafiosa italiana.'),
+      ('Matrix', 'Ficção', 136, 1999, '14+', 'Lana e Lilly Wachowski', 'Um Hacker descobre a verdade sobre a realidade.'),
+      ('Interestelar', 'Ficção', 136, 2014, '12+', 'Christopher Nolan', 'Uma jornada espacial para salvar  a humanidade.'),
+      ('Clube da Luta', 'Drama', 139, 1999, '18+', 'David Fincher', 'Um homem se envolve em um clube de combate underground.'),
+      ('O Senhor dos Anéis', 'Fantasia', 178, 2001, '12+', 'Peter Jackson', 'Uma jornada épica para destruir um anel maligno.'),
+      ('Vingadores: Ultimato', 'Ação', 181,2019, '12+', 'Anthony e Joe Russo', 'Os heróis se unem para salvar o universo.'),
+      ('Parasita', 'Thriller', 132, 2019, '16+', 'Bong Joon-ho', 'Uma família pobre infiltra uma casa rica.'),
+      ('Cidade de Deus', 'Crime', 130, 2002, '18+', 'Fernando Meirelles', 'A vida no violento bairro da Cidade de Deus.');
+
+SELECT * FROM filme;
+
+insert into serie(titulo, genero, temporadas, ano_lancamento, classificacao_indicativa, criador, sinopse) 
+values
+	 ('Breaking Bad', 'Crime', 5, 2008, '16+', 'Vince Gilligan', 'Um professor de química se torna um produtor de drogas.'),
+	 ('Stranger Things', 'Ficção', 4, 2016, '14+', 'Irmãos Duffer', 'Um grupo de crianças enfrenta fenômenos sobrenaturais.'),
+	 ('Game Of Thrones', 'Fantasia', 8, 2011, '18+', 'David Benioff & D.B. Weiss', 'Famílias nobres lutam pelo controle de um reino.'),
+	 ('The Office', 'Comédia', 9, 2005, '12+', 'Greg Daniels', 'O dia a dia de uma empresa de papel.'),
+	 ('Friends', 'Comédia', 10, 1994, '12+', 'David Crane', 'A vida de seis amigos em Nova York.'),
+	 ('The Witcher', 'Fantasia', 3, 2019, '16+', 'Lauren Schmidt Hissrich', 'Um caçador de monstros em um mundo mágico.'),
+	 ('Black Mirror', 'Ficção', 5, 2011, '16+', 'Charlie Brooker', 'Episódios independentes sobre tecnologia e sociedade.'),
+	 ('Narcos', 'Crime', 3, 2015, '18+', 'Chris Brancato', 'A ascensão e queda de um cartel de drogas.');
+
+select * from serie;
+
+insert into plano(pacote, preco, periodo, resolucao, numero_dispositivos, beneficios, status) values
+                  ('Básico', 20, 'Mensal', 'HD', 1, 'Acesso a filmes e séries','Ativo'),
+                  ('Premium', 40, 'Mensal', 'Full HD', 3, 'Acesso a conteúdo exclusivo', 'Ativo'),
+                  ('Família', 60, 'Mensal', '4K' , 5, 'Perfis personalizados', 'Ativo');
+
+select * from plano;
+
+INSERT INTO usuario (nome, email, senha, data_cadastro, pais, idade, id_plano) VALUES  
+    ('João Silva', 'joao@gmail.com', 'ab1234', '2023-01-01', 'Brasil', 25, 1),  
+    ('Leticia Souza', 'let@gmail.com', 'zx7890', '2023-02-15', 'Brasil', 30, 2),  
+    ('Pedro Costa', 'pedro@gmail.com', 'mac22743', '2023-03-10', 'Brasil', 30, 1),  
+    ('Ana Santos', 'ana@gmail.com', 'eleven090', '2023-04-05', 'Brasil', 28, 3),  
+    ('Carlos Lima', 'carlos@gmail.com', 'bad021', '2023-06-12', 'Espanha', 27, 2),  
+    ('Luiza Mendes', 'lu@gmail.com', 'pokemon22', '2024-07-03', 'Espanha', 32, 1),  
+    ('Bruno Alves', 'bruno@gmail.com', 'bda5805', '2024-05-15', 'Portugal', 35, 3),  
+    ('Sofia Rocha', 'sofia@gmail.com', 'snt427', '2024-04-20', 'Portugal', 32, 2),
+    ('Neymar silva', 'ney@gmail.com', 'santos890', '2024-04-10', 'Brasil', 32, 2),
+    ('Selena Gomez', 'selena@gmail.com', 'selena21', '2024-04-10', 'Brasil', 28, 2);
+    
+    select * from usuario;
+
+insert into assistiu_filme(id_usuario, id_filme, data_assistida, avaliacao) values
+       (1, 1, '2023-10-01', 5),
+       (2, 2, '2023-10-02', 4),
+       (3, 3, '2023-10-03', 5),
+       (4, 4, '2023-10-04', 4),
+       (5, 5, '2023-10-05', 5),
+       (6, 6, '2024-10-07', 5),
+       (7, 7, '2024-10-08', 5),
+       (8, 8, '2024-10-09', 3),
+       (9, 5, '2024-7-09', 3),
+       (10, 7, '2024-05-10', 3);
+       
+   select * from assistiu_filme
+       
+       
+insert into assistiu_serie(id_usuario, id_serie, data_assistida, avaliacao) values
+	   (1, 1, '2023-10-01', 5),
+	   (2, 2, '2023-10-02', 4),
+	   (3, 3, '2023-10-03', 5),
+	   (4, 4, '2023-10-04', 4),
+	   (5, 5, '2023-10-05', 5),
+	   (6, 6, '2024-10-06', 5),
+	   (7, 7, '2024-11-11', 3),
+	   (8, 8, '2024-10-09', 4),
+	   (9, 8, '2024-10-09', 3),
+	   (10, 7, '2024-10-20', 4);
+                                 
+		select * from assistiu_serie
+                                 
+insert into assina_plano(id_usuario, id_plano, data_inicio, data_termino) values
+	(1, 1, '2023-01-01', '2024-01-01'),  
+    (2, 2, '2023-02-15', '2024-02-15'),  
+    (3, 3, '2023-03-10', '2024-03-10'),  
+    (4, 3, '2023-04-05', '2024-04-05'),  
+    (5, 2, '2023-06-12', '2024-06-12'),  
+    (6, 2, '2024-07-03', '2025-07-03'),  
+    (7, 1, '2024-05-15', '2025-05-15'),  
+    (8, 3, '2024-04-20', '2025-04-20'),
+    (9, 1, '2024-04-10', '2025-04-10'),
+    (10, 1, '2024-04-10', '2025-04-10');
+    
+    select * from assina_plano
