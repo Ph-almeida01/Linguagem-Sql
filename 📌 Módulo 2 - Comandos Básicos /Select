@@ -10,7 +10,6 @@ select * from usuario;
 select * from assistiu_filme
 select * from assina_plano
 
-
 Para filtrar os resultados, usamos WHERE:
 
-SELECT * FROM serie WHERE temporada = '8';
+SELECT * FROM serie WHERE temporadas = '8';
