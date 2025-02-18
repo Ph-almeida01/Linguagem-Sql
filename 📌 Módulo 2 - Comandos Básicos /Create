@@ -1,8 +1,8 @@
 🏛️ 2. Criando um Banco de Dados e Tabelas (`CREATE`)
 
-O comando `CREATE` é utilizado para criar **bancos de dados** e **tabelas**.
+O comando `CREATE` é utilizado para criar "bancos de dados" e "tabelas".
 
- 📌 Criando um Banco de Dados
+📌 Criando um Banco de Dados
 
 CREATE DATABASE streamflow;
 
@@ -61,8 +61,7 @@ id_plano int not null,
 foreign key(id_plano) References plano(id_plano)
 );
 
-#  Garante que um usuário não possa 
-# avaliar o mesmo filme mais de uma vez
+# Garante que um usuário não possa avaliar o mesmo filme mais de uma vez
 
 create table assistiu_filme(
 id_assistiu_Filme int primary key auto_increment,
@@ -86,8 +85,7 @@ foreign key(id_serie) references serie(id_serie),
 constraint unique (id_usuario, id_serie)
 );
 
-# A restrição CHECK garante que a data de término não 
-# seja anterior à data de início, ajudando a garantir a consistência dos dados.
+# A restrição CHECK garante que a data de término não seja anterior à data de início, ajudando a garantir a consistência dos dados.
 
 create table assina_plano(
 id_assina_plano int primary key auto_increment,
