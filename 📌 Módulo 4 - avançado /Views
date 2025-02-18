@@ -1,5 +1,33 @@
- 🚀 Módulo Avançado - SQL
+👀 1. O que são VIEWS?
 
-Neste módulo, abordaremos conceitos mais avançados do SQL, como ""Views, Functions e Procedures**, que ajudam a melhorar a eficiência e organização do banco de dados.
+Uma **VIEW** é uma consulta SQL armazenada que pode ser tratada como uma tabela virtual. Elas são úteis para **simplificar consultas complexas** e **proteger dados sensíveis**, restringindo o acesso a determinadas colunas.
 
----
+### 📌 Criando uma View
+
+# 1) View :Exibir usuários e seus planos ativos
+
+create view usuarios_com_planos AS
+select u.id_usuario, u.nome, u.email, p.pacote, p.preco, ap.data_inicio, ap.data_termino
+from usuario u
+join assina_plano ap on u.id_usuario = ap.id_usuario
+join plano p on ap.id_plano = p.id_plano
+where ap.data_termino >= CURDATE();
+
+📌 Usando uma View
+
+select * from usuarios_com_planos;
+
+# 2) View : Exibir séries com avaliações médias
+
+CREATE VIEW series_com_avaliacoes AS
+SELECT s.id_serie, s.titulo, s.genero, s.temporadas, s.ano_lancamento, s.classificacao_indicativa,
+       s.criador, s.sinopse, AVG(avaliacao) AS media_avaliacao
+FROM serie s
+LEFT JOIN assistiu_serie a ON s.id_serie = a.id_serie
+GROUP BY s.id_serie;
+
+select * from  series_com_avaliacoes;
+
+📌 Excluindo uma View
+
+DROP VIEW series_com_avaliacoes ;
