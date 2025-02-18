@@ -1,0 +1,62 @@
+🏗️ Funções Definidas pelo Usuário (FUNCTION)
+Uma FUNCTION no SQL permite criar operações personalizadas que retornam um único valor. Ela é útil para cálculos e transformações de dados.
+
+use streamflow;
+
+DELIMITER $$
+
+create function eh_adulto(p_id_usuario INT)
+RETURNS VARCHAR(3)
+DETERMINISTIC
+READS SQL DATA
+BEGIN
+    DECLARE resultado VARCHAR(3);
+    DECLARE idade_usuario INT;
+    
+    SELECT idade INTO idade_usuario
+    FROM usuario
+    WHERE id_usuario = p_id_usuario;
+    
+    IF idade_usuario >= 18 THEN
+        SET resultado = 'Sim';
+    ELSE
+        SET resultado = 'Não';
+    END IF;
+    
+    RETURN resultado;
+END $$
+
+DELIMITER ;
+
+📌 Usando a Function
+
+# Retorna 'Sim' se o usuário com id_usuario = 1 for adulto, caso contrário, retorna 'Não'
+select eh_adulto(5); 
+select * from usuario;
+
+
+DELIMITER $$
+
+CREATE FUNCTION usuario_assistiu_serie(p_id_usuario INT, p_id_serie INT)
+RETURNS INT
+DETERMINISTIC
+READS SQL DATA
+BEGIN
+    DECLARE resultado INT;
+    
+    SELECT COUNT(*) INTO resultado
+    FROM assistiu_serie
+    WHERE id_usuario = p_id_usuario AND id_serie = p_id_serie;
+    
+    RETURN resultado;
+END $$
+
+DELIMITER ;
+# Retorna 1 se o usuário com id_usuario = 1 assistiu à série com id_serie = 1
+select usuario_assistiu_serie(10, 7); 
+
+select * from assistiu_serie;
+
+📌 Excluindo uma Function
+
+DROP FUNCTION  usuario_assistiu_serie;
