@@ -1,0 +1,81 @@
+use streamflow;
+
+#1) Liste todos os usuários que assistiram a filmes, mostrando o nome do usuário, o título do filme e a data em que assistiram.
+
+select u.nome, f.titulo, af.data_assistida
+from usuario as u
+inner join assistiu_filme as af on u.id_usuario = af.id_usuario
+inner join filme f on af.id_filme = f.id_filme;
+
+#2) Liste todos os filmes e, se houver, as avaliações dos usuários que assistiram a esses filmes.
+
+select f.titulo, af.avaliacao
+from filme as f
+left join assistiu_filme as af on f.id_filme = af.id_filme;
+
+#3) Liste todos os usuários e, se houver, os filmes que eles assistiram. Mostre o nome do usuário e o título do filme.
+
+select  f.titulo, af.data_assistida, u.nome
+from filme as f
+right join assistiu_filme as af on f.id_filme = af.id_filme
+right join usuario as u on af.id_usuario = u.id_usuario;
+
+#4) Liste todos os usuários e os planos que eles assinaram, mostrando o nome do usuário, o pacote do plano e o preço.
+
+select u.nome, p.pacote, p.preco
+from usuario as u
+join plano as p on u.id_plano = p.id_plano
+
+#5) Calcule o valor total arrecadado por cada plano, considerando o preço do plano 
+# e a quantidade de usuários que o assinaram.
+
+select p.pacote, SUM(p.preco) AS valor_total
+from plano p
+inner join usuario u on p.id_plano = u.id_plano
+group by p.pacote;
+
+#6) Liste todos os usuários que assinaram um plano no ano de 2023, 
+# mostrando o nome do usuário, o pacote do plano e a data de cadastro.
+
+select u.nome, p.pacote, u.data_cadastro
+from usuario u
+inner join  plano p on u.id_plano = p.id_plano
+where year(u.data_cadastro) = 2024;
+
+#7) Liste todos os usuários que assistiram a filmes lançados após o ano de 2000.
+
+select u.nome, f.titulo, f.ano_lancamento, af.data_assistida
+from filme as f
+join assistiu_filme as af on f.id_filme = af.id_filme
+join usuario as u on af.id_usuario = u.id_usuario
+where f.ano_lancamento > 2000;
+
+#8) Liste os filmes que têm uma média de avaliação superior a 4.
+
+select f.titulo, avg(af.avaliacao) as media_avaliacao
+from filme f
+inner join assistiu_filme af ON f.id_filme = af.id_filme
+group by f.titulo
+having media_avaliacao > 4;
+
+#9) Liste todos os usuários que assistiram a filmes, ordenados pela data em que assistiram.
+
+select u.nome, f.titulo, af.data_assistida
+from filme as f 
+inner join assistiu_filme as af on f.id_filme = af.id_filme
+inner join usuario as u on af.id_filme = u.id_usuario
+order by af.data_assistida;
+
+#10) Calcule a quantidade de usuários que assinaram cada plano, mostrando o pacote do plano e a quantidade de usuários.
+
+select p.pacote, COUNT(u.id_usuario) as quantidade_usuarios
+from plano p
+inner join usuario u on p.id_plano = u.id_plano
+group by p.pacote;
+
+#11) Liste todos os usuários que assinaram um plano ativo, mostrando o nome do usuário, o pacote do plano e o status do plano.
+
+select u.nome, p.pacote, p.status
+from usuario u
+inner join plano p on u.id_plano = p.id_plano
+where p.status = 'ativo';
