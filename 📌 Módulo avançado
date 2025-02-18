@@ -1,0 +1,9 @@
+# 🚀 Módulo Avançado - SQL
+
+Neste módulo, abordaremos conceitos mais avançados do SQL, como **Views, Functions e Procedures**, que ajudam a melhorar a eficiência e organização do banco de dados.
+
+---
+
+## 👀 1. O que são VIEWS?
+
+Uma **VIEW** é uma consulta SQL armazenada que pode ser tratada como uma tabela virtual. Elas são úteis para **simplificar consultas complexas** e **proteger dados sensíveis**, restringindo o acesso a determinadas colunas.
