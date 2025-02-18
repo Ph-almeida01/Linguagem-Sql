@@ -1,0 +1,19 @@
+✏️ Modificando uma Tabela (ALTER TABLE)
+
+📌 Adicionando uma nova coluna
+
+alter table serie
+add legenda varchar(20),
+add dublagem varchar(20);
+
+
+💡 O que aconteceu?
+Agora a tabela serie tem duas novas colunas chamada  legenda e dublagem.
+
+📌 Modificando o tipo de uma coluna
+
+alter table plano
+modify preco decimal(5,2) not null;
+
+
+
