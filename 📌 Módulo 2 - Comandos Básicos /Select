@@ -2,3 +2,15 @@ Consultando Dados (SELECT)
 
 Para visualizar os dados de uma tabela, usamos SELECT:
 
+SELECT * FROM filme;
+select * from serie;
+select * from assistiu_serie
+select * from plano;
+select * from usuario;
+select * from assistiu_filme
+select * from assina_plano
+
+
+Para filtrar os resultados, usamos WHERE:
+
+SELECT * FROM serie WHERE temporada = '8';
