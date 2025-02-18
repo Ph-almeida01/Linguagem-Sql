@@ -1,0 +1,13 @@
+❌ Excluindo Dados (DELETE)
+
+Para remover registros, usamos DELETE:
+
+DELETE FROM clientes WHERE id_filme = 1;
+
+Para excluir uma tabela inteira:
+
+DROP TABLE serie;
+
+Para excluir um banco de dados:
+
+DROP DATABASE streamflow;
