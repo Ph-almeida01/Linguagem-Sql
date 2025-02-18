@@ -1,0 +1,70 @@
+🔄 Stored Procedures (PROCEDURE)
+
+Uma Stored Procedure é um conjunto de comandos SQL armazenados no banco de dados, permitindo a execução de processos mais complexos de forma eficiente.
+
+use streamflow;
+
+📌 Criando uma Procedure para adicionar clientes
+
+# 1) Procedure : Inserir um novo filme
+DELIMITER //
+
+CREATE PROCEDURE AdicionarFilme(
+    IN p_titulo VARCHAR(50),
+    IN p_genero CHAR(50),  
+    IN p_duracao INT,
+    IN p_ano_lancamento YEAR,
+    IN p_classificacao_indicativa VARCHAR(10),
+    IN p_diretor VARCHAR(50),
+    IN p_sinopse VARCHAR(100),
+    IN p_legenda VARCHAR(20),
+    IN p_dublagem VARCHAR(20)
+)
+BEGIN
+    INSERT INTO filme (titulo, genero, duracao, ano_lancamento, classificacao_indicativa, diretor, sinopse, legenda, dublagem)
+    VALUES (p_titulo, p_genero, p_duracao, p_ano_lancamento, p_classificacao_indicativa, p_diretor, p_sinopse, p_legenda, p_dublagem);
+END //
+
+DELIMITER ;
+
+🔹 Essa Procedure insere um novo filme na tabela filme usando parâmetros.
+
+📌 Executando a Procedure
+
+CALL AdicionarFilme(
+    'O Grande Truque',              # Título do filme
+    'Drama',                        # Gênero
+    130,                            # Duração em minutos
+    2006,                           # Ano de lançamento
+    '12 anos',                      # Classificação indicativa
+    'Christopher Nolan',            # Diretor
+    'Dois mágicos rivais competem para criar o truque perfeito.', # Sinopse
+    'Português',                    # Legenda
+    'Inglês'                        # Dublagem
+);
+
+select * from filme;
+
+📌 Excluindo uma Procedure
+
+DROP PROCEDURE AdicionarFilme;
+
+# 2) Procedure : Atualizar preço de um plano
+
+DELIMITER $$
+CREATE PROCEDURE atualizar_preco_plano(
+    IN p_id_plano INT,
+    IN p_novo_preco DECIMAL(5,2)
+)
+BEGIN
+    UPDATE plano
+    SET preco = p_novo_preco
+    WHERE id_plano = p_id_plano;
+END $$
+DELIMITER ;
+
+call atualizar_preco_plano(1, 99.99);
+
+select * from plano;
+
+
