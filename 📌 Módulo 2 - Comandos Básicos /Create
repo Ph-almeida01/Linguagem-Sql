@@ -1,0 +1,101 @@
+🏛️ 2. Criando um Banco de Dados e Tabelas (`CREATE`)
+
+O comando `CREATE` é utilizado para criar **bancos de dados** e **tabelas**.
+
+ 📌 Criando um Banco de Dados
+
+CREATE DATABASE streamflow;
+
+💡 Dica: Para usar o banco recém-criado, execute:
+
+Use streamflow;
+
+📌 Criando uma Tabela
+
+create table filme(
+id_filme int primary key auto_increment,
+titulo varchar(50) not null,
+genero char(10) not null,
+duracao int not null,
+ano_lancamento year not null,
+classificacao_indicativa varchar(10) not null,
+diretor varchar(50) not null,
+sinopse varchar(100) not null,
+legenda varchar(20) not null,
+dublagem varchar(20) not null
+);
+
+create table serie(
+id_serie int primary key auto_increment,
+titulo varchar(50) not null,
+genero char(10) not null,
+temporadas int not null,
+ano_lancamento year not null,
+classificacao_indicativa varchar(10),
+criador varchar(50) not null,
+sinopse varchar(100) not null,
+legenda varchar(20) not null,
+dublagem varchar(20) not null
+);
+
+create table plano(
+id_plano int primary key auto_increment,
+pacote varchar(10) not null,
+preco decimal(5,2) not null,
+periodo varchar(10) not null,
+resolucao varchar(10) not null,
+numero_dispositivos int not null,
+beneficios varchar(100) not null,
+status varchar(20) not null
+);
+
+create table usuario(
+id_usuario int primary key auto_increment,
+nome varchar(50) not null,
+email varchar(100) not null,
+senha varchar(10) not null,
+data_cadastro date not null,
+pais varchar(50) not null,
+idade int not null,
+id_plano int not null,
+foreign key(id_plano) References plano(id_plano)
+);
+
+#  Garante que um usuário não possa 
+# avaliar o mesmo filme mais de uma vez
+
+create table assistiu_filme(
+id_assistiu_Filme int primary key auto_increment,
+data_assistida date not null,
+avaliacao int CHECK (avaliacao BETWEEN 1 AND 5),
+id_usuario int not null,
+foreign key(id_usuario)  references usuario(id_usuario),
+id_filme int not null, 
+foreign key(id_filme) references filme(id_filme),
+constraint unique (id_usuario, id_filme)
+);
+
+create table assistiu_serie(
+id_assistiu_serie int primary key auto_increment,
+data_assistida date not null,
+avaliacao int CHECK (avaliacao BETWEEN 1 AND 5),
+id_usuario int not null,
+foreign key (id_usuario) references usuario(id_usuario),
+id_serie int not null,
+foreign key(id_serie) references serie(id_serie),
+constraint unique (id_usuario, id_serie)
+);
+
+# A restrição CHECK garante que a data de término não 
+# seja anterior à data de início, ajudando a garantir a consistência dos dados.
+
+create table assina_plano(
+id_assina_plano int primary key auto_increment,
+data_inicio date not null,
+data_termino date not null,
+id_usuario int not null,
+foreign key(id_usuario) references usuario(id_usuario),
+id_plano int not null,
+foreign key(id_plano) references plano(id_plano),
+CONSTRAINT chk_data_inicio_termino CHECK (data_inicio <= data_termino)
+);
