@@ -1,0 +1,15 @@
+Atualizando Dados (UPDATE)
+
+O comando UPDATE modifica registros existentes:
+
+update filme set legenda = 'Português, Inglês, Espanhol',
+dublagem = 'Português, Inglês, Espanhol'
+Where id_filme <= 8;
+
+select * from filme
+
+update serie set legenda = 'Português, Inglês, Espanhol',
+dublagem = 'Português, Inglês, Espanhol'
+Where id_serie <= 8;
+
+select * from serie;
