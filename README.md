@@ -19,8 +19,7 @@ SQL (**Structured Query Language**) é uma linguagem utilizada para gerenciar ba
 ✅ `JOIN` (INNER, LEFT, RIGHT, FULL)  
 ✅ `GROUP BY` e `HAVING
 
-📌 **Módulo 4 - avançado**
-
+-----------------------------
 ✅ Views
 ✅ Procedure
 ✅ Function
