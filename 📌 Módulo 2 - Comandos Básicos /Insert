@@ -14,8 +14,6 @@ values
       ('Parasita', 'Thriller', 132, 2019, '16+', 'Bong Joon-ho', 'Uma família pobre infiltra uma casa rica.'),
       ('Cidade de Deus', 'Crime', 130, 2002, '18+', 'Fernando Meirelles', 'A vida no violento bairro da Cidade de Deus.');
 
-SELECT * FROM filme;
-
 insert into serie(titulo, genero, temporadas, ano_lancamento, classificacao_indicativa, criador, sinopse) 
 values
 	 ('Breaking Bad', 'Crime', 5, 2008, '16+', 'Vince Gilligan', 'Um professor de química se torna um produtor de drogas.'),
@@ -27,14 +25,10 @@ values
 	 ('Black Mirror', 'Ficção', 5, 2011, '16+', 'Charlie Brooker', 'Episódios independentes sobre tecnologia e sociedade.'),
 	 ('Narcos', 'Crime', 3, 2015, '18+', 'Chris Brancato', 'A ascensão e queda de um cartel de drogas.');
 
-select * from serie;
-
 insert into plano(pacote, preco, periodo, resolucao, numero_dispositivos, beneficios, status) values
                   ('Básico', 20, 'Mensal', 'HD', 1, 'Acesso a filmes e séries','Ativo'),
                   ('Premium', 40, 'Mensal', 'Full HD', 3, 'Acesso a conteúdo exclusivo', 'Ativo'),
                   ('Família', 60, 'Mensal', '4K' , 5, 'Perfis personalizados', 'Ativo');
-
-select * from plano;
 
 INSERT INTO usuario (nome, email, senha, data_cadastro, pais, idade, id_plano) VALUES  
     ('João Silva', 'joao@gmail.com', 'ab1234', '2023-01-01', 'Brasil', 25, 1),  
@@ -47,8 +41,6 @@ INSERT INTO usuario (nome, email, senha, data_cadastro, pais, idade, id_plano) V
     ('Sofia Rocha', 'sofia@gmail.com', 'snt427', '2024-04-20', 'Portugal', 32, 2),
     ('Neymar silva', 'ney@gmail.com', 'santos890', '2024-04-10', 'Brasil', 32, 2),
     ('Selena Gomez', 'selena@gmail.com', 'selena21', '2024-04-10', 'Brasil', 28, 2);
-    
-    select * from usuario;
 
 insert into assistiu_filme(id_usuario, id_filme, data_assistida, avaliacao) values
        (1, 1, '2023-10-01', 5),
@@ -62,9 +54,6 @@ insert into assistiu_filme(id_usuario, id_filme, data_assistida, avaliacao) valu
        (9, 5, '2024-7-09', 3),
        (10, 7, '2024-05-10', 3);
        
-   select * from assistiu_filme
-       
-       
 insert into assistiu_serie(id_usuario, id_serie, data_assistida, avaliacao) values
 	   (1, 1, '2023-10-01', 5),
 	   (2, 2, '2023-10-02', 4),
@@ -76,8 +65,7 @@ insert into assistiu_serie(id_usuario, id_serie, data_assistida, avaliacao) valu
 	   (8, 8, '2024-10-09', 4),
 	   (9, 8, '2024-10-09', 3),
 	   (10, 7, '2024-10-20', 4);
-                                 
-		select * from assistiu_serie
+                        
                                  
 insert into assina_plano(id_usuario, id_plano, data_inicio, data_termino) values
 	(1, 1, '2023-01-01', '2024-01-01'),  
@@ -90,5 +78,3 @@ insert into assina_plano(id_usuario, id_plano, data_inicio, data_termino) values
     (8, 3, '2024-04-20', '2025-04-20'),
     (9, 1, '2024-04-10', '2025-04-10'),
     (10, 1, '2024-04-10', '2025-04-10');
-    
-    select * from assina_plano
